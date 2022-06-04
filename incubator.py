@@ -51,7 +51,7 @@ def incubator(width: int, depth: int, height: int, thickness: int, hole_distance
 
     inner_height = height - inner_diff
     height_padding = inner_diff
-    height_count = int(inner_height * 0.75 // distance)
+    height_count = int(inner_height * 0.5 // distance)
     height_start = inner_diff
 
     print('>>> Hole pattern: {width}x{depth}x{height}'.format(width=width_count, depth=depth_count, height=height_count))
