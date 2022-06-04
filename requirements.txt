@@ -1,0 +1,5 @@
+solidpython==1.1.3
+viewscad
+jupyterlab
+trafaret_config
+mypy

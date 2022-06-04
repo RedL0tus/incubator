@@ -1,0 +1,8 @@
+*.scad
+*.3mf
+*.gcode
+*.stl
+
+**/.direnv
+**/.ipynb_checkpoints
+**/__pycache__
