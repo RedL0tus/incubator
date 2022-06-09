@@ -26,7 +26,7 @@ def box(width: int, depth: int, height: int, thickness: int, radius: int) -> Ope
     return outer - inner_space
 
 
-def incubator(width: int, depth: int, height: int, thickness: int, hole_distance: int, hole_diameter: float) -> OpenSCADObject:
+def incubator(width: int, depth: int, height: int, thickness: int, height_threshold: float, hole_distance: int, hole_diameter: float) -> OpenSCADObject:
     ret = box(width, depth, height, thickness, FILLET_RADIUS)
     inner_diff = thickness + 2 * FILLET_RADIUS
     hole_radius = hole_diameter / 2
@@ -51,7 +51,7 @@ def incubator(width: int, depth: int, height: int, thickness: int, hole_distance
 
     inner_height = height - inner_diff
     height_padding = inner_diff
-    height_count = int(inner_height * 0.5 // distance)
+    height_count = int(inner_height * height_threshold // distance)
     height_start = inner_diff
 
     print('>>> Hole pattern: {width}x{depth}x{height}'.format(width=width_count, depth=depth_count, height=height_count))
@@ -88,6 +88,7 @@ if __name__ == '__main__':
         T.Key('depth', default=115): T.Int(),
         T.Key('height', default=75): T.Int(),
         T.Key('thickness', default=8): T.Int(),
+        T.Key('height_threshold', default=0.5): T.Float(),
         T.Key('hole_distance', default=5): T.Int(),
         T.Key('hole_diameter', default=0.5): T.Float(),
     })
